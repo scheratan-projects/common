@@ -16,6 +16,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias odj='. ~/own/django/bin/activate'
 alias wdj='. ~/mon/bin/activate'
+alias start_mail='sudo python -m smtpd -n -c DebuggingServer localhost:25'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

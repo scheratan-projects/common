@@ -5,6 +5,7 @@ set encoding=utf-8
 set nu
 set clipboard=unnamed
 set t_Co=256
+set hlsearch
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -19,8 +20,10 @@ Plugin 'gmarik/Vundle.vim'
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 Plugin 'tmhedberg/SimpylFold'
 let g:SimpylFold_docstring_preview=1
+let g:SimpylFold_fold_import = 0
+
 Plugin 'vim-scripts/indentpython.vim'
-Bundle 'Valloric/YouCompleteMe'
+" Bundle 'Valloric/YouCompleteMe'
 "python with virtualenv support
 py << EOF
 import os
@@ -53,21 +56,25 @@ filetype plugin indent on    " required
 
 
 " Fily type behaviour
-au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
 "    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set expandtab |
+    \ set autoindent |
     \ set fileformat=unix
 
+highlight BadWhitespace ctermbg=red guibg=darkred
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set filetype=unix
 
 colorscheme zenburn
 
@@ -76,5 +83,5 @@ colorscheme zenburn
 nnoremap <F7> :NERDTreeToggle<CR>
 nnoremap <space> za
 set pastetoggle=<F2>
-
+set nofoldenable    " disable folding
 
